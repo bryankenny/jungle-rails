@@ -1,3 +1,4 @@
+<% if cart.size > 0 %>
 <section class="cart-show">
 
   <header class="page-header">
@@ -40,7 +41,7 @@
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-amount="<%= cart_subtotal_cents %>"
           data-name="Jungle"
-          data-description="Khurram Virani's Jungle Order"
+          data-description="Your Jungle Order"
           data-locale="auto"
           data-email="kvirani@gmail.com"
           data-currency="cad">
@@ -50,3 +51,11 @@
   </div>
 
 </section>
+
+<% else %>
+  <section class="cart-show">
+  <h3>Hey shopper! Your cart is empty, would you like to take another look?</h3>
+  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+  </section>
+
+<% end %>
