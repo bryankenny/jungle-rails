@@ -34,6 +34,7 @@ cat3 = Category.find_or_create_by! name: 'Furniture'
 puts "Re-creating Products ..."
 
 Product.destroy_all
+Review.destroy_all
 
 cat1.products.create!({
   name:  'Men\'s Classy shirt',
@@ -130,6 +131,20 @@ cat3.products.create!({
   image: open_asset('furniture3.jpg'),
   quantity: 23,
   price: 2_483.75
+})
+
+## USERS
+ User.destroy_all
+user_test = User.new(first_name: "John", last_name: "Smith", email: "john@gmail.com")
+user_test.save
+ ## REVIEWS
+ prod1 = Product.find_by! id: 1
+user1 = User.find_by! email: "john@gmail.com"
+
+prod1.reviews.create!({
+  description: "I love this product!",
+  rating: 3,
+  user_id: user1.id
 })
 
 

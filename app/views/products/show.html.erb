@@ -26,6 +26,16 @@
       </div>
     </div>
 
+     <div class="row reviews">
+      <hr>
+      <% @product.reviews.each do |review| %>
+        <dd><strong>Rating:</strong> <%= review.rating %></dd>
+        <dd><strong>Review:</strong> <%= review.description %></dd>
+        <hr>
+      <% end %>
+    </div>
+
+
   </article>
 
 </section>
