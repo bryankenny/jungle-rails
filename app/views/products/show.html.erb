@@ -26,7 +26,14 @@
       </div>
     </div>
 
-     <div class="row reviews">
+     <div class="row">
+      <%= form_for [@product, @review], url: `/products/#{@product.id}/reviews` do |f| %>
+        <div class="form-fields">Rating: <%= f.select :rating, %w{ 1 2 3 4 5 }, {:prompt => "Rate..."}, {:required => true} %></div>
+        <div class="form-fields">Write a Review: <%= f.text_area :description, :required => true %></div>
+        <div class="form-fields"><%= f.submit "Submit Review" %></div>
+      <% end %>
+    </div>
+    <div class="row">
       <hr>
       <% @product.reviews.each do |review| %>
         <dd><strong>Rating:</strong> <%= review.rating %></dd>
